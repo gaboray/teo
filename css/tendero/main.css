@@ -1,0 +1,19 @@
+section.panel{	
+	padding: 20px;
+	text-align: center;
+	background: #FAFAD2;
+	height: 350px;
+	border-radius: 30px;
+}
+section.panel table{
+	margin: 0 auto;
+}
+section.panel table tr td, section.panel table tr th{
+	padding: 10px;
+}
+.panel#cartera{
+}
+.panel#creditos{
+}
+.panel#pagos{
+}

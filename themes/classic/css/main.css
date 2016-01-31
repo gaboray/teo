@@ -1,0 +1,299 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway:700);
+*{	margin: 0; padding: 0;}
+header{
+	width: 100%;
+	padding: 8px 50px;
+}
+.font20{
+	font-size: 20px;
+}
+header#main{
+	background: #CD5C5C;
+}
+header#tendero{
+	background: #4682B4;
+}
+.logo img{
+	width: 50%;
+}
+header #logo{
+	width: 200px;
+	height: 60px;
+	border-radius: 20px;
+}
+#form-register{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+img#assistant{
+	position: fixed;
+	left: -30px;
+	bottom: 0;
+	width: 90px;
+	z-index: 100;
+
+	-webkit-transition: all 500ms ease;
+	-o-transition:all 500ms ease;
+	transition: all 500ms ease;
+}
+img#assistant:hover{
+	left: -30px;
+	width: 130px;
+}
+img#assistant.active{
+	width: 200px;
+}
+/*
+	*	Menu
+*/
+.categories{
+	position: fixed;
+}
+.line-category .img-category img{
+	width: 40px;
+	-webkit-transition: all 600ms ease;
+	-o-transition:all 600ms ease;
+	transition: all 460ms ease;
+
+}
+.line-category div{
+	display: inline-block;
+}
+.line-category{
+	width: 350px;
+	margin-left: -10px;
+
+	-webkit-transition: all 900ms ease;
+	-o-transition:all 900ms ease;
+	transition: all 900ms ease;
+}
+.line-category:hover{
+	margin-left: 0px
+}
+.line-category:hover > .img-category img{
+	width: 100px;
+}
+.in-line{
+	display: inline-block;
+}
+nav ul li{
+	display: block;
+	font-size: 18px;
+	padding: 7px 25px 7px 25px;
+	border-radius: 20px;
+}
+a.no-decoration, li.no-decoration a{
+	text-decoration: none;
+	/*color: #fff;*/
+}
+.white a, .white{
+	color: #fff;
+}
+a#car span#amount{
+	color: #F08080;
+	font-size: 25px;
+}
+.glyphicon{
+	color: #2F4F4F;
+}
+.glyphicon-user, .glyphicon-edit{
+	font-size: 25px;
+}
+.glyphicon-shopping-cart{
+	font-size: 25px;
+}
+span.action-user{
+	font-size: 17px;
+}
+
+span.glyphicon-alert{
+	font-size: 200px;
+}
+span.glyphicon-ok, span.glyphicon-refresh{
+	font-size: 100px;
+	padding: 50px;
+	color: #8FBC8F;
+}
+/*
+	*
+*/
+h1.item-name{
+	font-family: 'Raleway', sans-serif;
+}
+input#search{
+	width: 600px;
+}
+a#verEspecificacion, .glyphicon-plus{
+	color: #E9967A;
+}
+.menu-left{
+	box-sizing: border-box;
+	background:	#F08080;
+	height: 100%;
+	padding: 40px;
+}
+.content-right{
+	height: 100%;
+	padding: 50px;
+}
+div#mainmenu{
+	background: #FFFFF0;
+}
+#mainmenu ul li{
+	display: block;
+	padding: 10px 20px;
+}
+#mainmenu ul li:hover{
+	background:	#F5DEB3;
+}
+#mainmenu ul li a{
+	text-decoration: none;
+	
+}
+/*
+	*
+*/
+img.main-picture{
+	border: solid 1px #F5F5F5;
+}
+div.pictures{
+	margin-top: 20px;
+}
+div.pictures ul li{
+	display: inline-block;
+}
+li.pictures-product{
+	cursor: pointer;
+}
+li.pictures-product img{
+	width: 50px;
+}
+.pictures ul li.active{
+	border: solid 2px #FFA07A
+}
+/*
+	*
+*/
+/*
+	*	End Menu
+*/
+h3.promotion{
+	font-size: 40px;
+}
+span.deal{
+	font-size: 80px;
+	color: #6495ED;
+	font-weight: bold;
+}
+.bg-image, .category-description{
+	height: 400px;
+}
+.category-description{
+	padding: 10px 40px;
+}
+#tv .bg-image{
+	background: url(../img/television1.jpg);
+	background-size: 130%;
+	background-position: -100px 0px;
+}	
+#furniture .bg-image{
+	background: url(../img/sala1.jpg);
+	background-size: 130%;
+	background-position: -100px -70px;
+}
+.bg-image#hombre{
+	background: url(../img/ropa-hombre.jpg);
+	background-size: 130%;
+	background-position: -100px 0px;
+}
+.bg-image#mujer{
+	background: url(../img/ropa.jpg);
+	background-size: 130%;
+	background-position: -140px 0px;
+}
+/*
+	*
+*/
+div#slideUp{
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background: #DEB887;
+	top:-0px;
+	right: -100%;
+	z-index: 99;
+
+	-webkit-transition: all 700ms ease;
+	-o-transition:all 700ms ease;
+	transition: all 700ms ease;
+}
+
+#slideUp h2{
+	color: #fff;
+	font-size: 40px;
+	text-align: center;
+	font-weight: bold;
+	margin-bottom: 50px;
+}
+#slideUp p.contenido{
+	font-size: 25px;
+	color: #fff;
+}
+#slideUp span#item-name{
+	font-size: 40px;
+	font-weight: bold;
+}
+/*
+	*
+*/
+
+/*
+	*	Detalles del producto
+*/
+p.descripcion{
+	font-size: 18px;
+	text-align: justify;
+	color: #808080;
+}
+span.payment1{
+	font-size: 25px;
+}
+span.payment2{
+	font-size: 15px;
+}
+span.abono{
+	font-size: 40px;
+	color: #4682B4;
+	font-weight: bold;
+}
+.plazo-picker label{
+	padding: 15px 25px;
+}
+.plazo-picker .btn.active{
+	background: #F08080;
+	color: #fff;
+}
+/*
+	*
+*/
+#help{
+	position: fixed;
+	width: 250px;
+	bottom: 0;
+	background: #D2B48C;
+	padding: 5px 10px 5px 80px;
+	color: #fff;
+	font-size: 20px;
+	border-radius: 20px;
+}
+footer{
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	padding: 5px;
+}
+footer a{
+	padding: 0px 20px 0px 20px;
+}
