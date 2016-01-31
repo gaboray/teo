@@ -4,7 +4,13 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-3">
-			
+			<div class="row">
+				<div class="col-sm-12">
+					<center>
+						<img src="<?php echo Yii::app()->request->baseUrl; ?>/images/teocredit/logo2.png" class="logo">
+					</center>
+				</div>
+			</div>
 			<div class="row">
 				<div class="categories">
 					<nav>

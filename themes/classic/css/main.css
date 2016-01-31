@@ -13,8 +13,9 @@ header#main{
 header#tendero{
 	background: #4682B4;
 }
-.logo img{
+img.logo{
 	width: 50%;
+	margin-bottom: 20px;
 }
 header #logo{
 	width: 200px;
