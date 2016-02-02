@@ -1,0 +1,11 @@
+commit 7ff7ae3757d00dcaca7d87ee5a0ce2796a112e1c
+Author: Gabriel <gabrielrmnd@gmail.com>
+Date:   Sun Jan 31 11:02:49 2016 -0600
+
+    Se agrego el logo TeoCredit
+
+commit b6ad16cf9c3af4d915d16e8f5aa395b7221a5082
+Author: Gabriel <gabrielrmnd@gmail.com>
+Date:   Sun Jan 31 10:35:28 2016 -0600
+
+    Iniciamos
