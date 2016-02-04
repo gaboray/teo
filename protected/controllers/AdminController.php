@@ -52,7 +52,8 @@ class AdminController extends Controller
 					'aceptarCredito',
 					'rechazarCredito',
 					'getRequest',
-					'programarEntrega'
+					'programarEntrega',
+					'entregar'
 				),
 				'users'=>array('*'),
 			),
@@ -566,8 +567,55 @@ class AdminController extends Controller
 		$programada->fecha_programada = date('Y-m-d');
 
 		if($programada->save())
-			if($enEspera->delete())
-				$this->redirect(array('entregas'));
+
+			$pedido = Pedido::model()->findByPk($id);
+			$pedido->status_ent = "transito";
+			if($pedido->save()){
+				if($enEspera->delete())
+					$this->redirect(array('entregas'));	
+			}
+	}
+	public function actionEntregar()
+	{
+		$id = $_GET['id'];
+		$programada = EntregaProgramada::model()->findByPk($id);
+
+		$realizada = new EntregaRealizada();
+		$realizada->id_ped_er = $id;
+		$realizada->fecha_entrega = date("Y-m-d");
+		$realizada->fecha_programada = $programada->fecha_programada;
+		if($realizada->save())
+		{
+			$pedido = Pedido::model()->with(
+				'idPlaPed'
+			)->findByPk($id);
+			$pedido->status_ent = "realizada";
+
+			$plazo  	= $pedido->idPlaPed->plazo;
+			$modalidad	= $pedido->idPlaPed->modalidad;
+
+			if($pedido->save())
+			{
+				for($x = 1; $x<=$plazo; $x++)
+				{
+					$pagoProgramado = new PagoProgramado();
+
+					$time = $x;
+					if($modalidad == 'quincenales')
+						$time = $x*2;
+
+					$effectiveDate = strtotime("+$time week", strtotime(date('Y-m-d'))); // returns timestamp
+					$pagoProgramado->id_ped_pp = $id;
+					$pagoProgramado->fecha =  date('Y-m-d',$effectiveDate); // formatted version	
+					$pagoProgramado->save();
+
+				}
+
+				if($programada->delete())
+					$this->redirect(array('entregas'));
+			}
+		}
+
 	}
 
 	public function getRequest()

@@ -43,6 +43,7 @@
 			<table class="table">
 				<thead>
 					<tr>
+						<th></th>
 						<th>Producto</th>
 						<th>Teléfono</th>
 						<th>Cliente</th>
@@ -54,6 +55,9 @@
 				<tbody>
 				<?php foreach($pedidosActivos as $pedido): ?>
 					<tr>
+						<td>
+							<span class="punto punto-<?php echo $pedido->status_ent;?>"></span>
+						</td>
 						<td><?php echo $pedido->idProPed->nombre; ?></td>
 						<td><?php echo $pedido->idCliPed->celular; ?></td>
 						<td>
@@ -67,7 +71,13 @@
 						<td><?php echo $pedido->detallePedido->pagos; ?></td>
 						<td>
 							<a href="historialCliente?id=<?php echo $pedido->idCliPed->id_cli_pc; ?>">Historial</a>
-							<a href="#">Pagar</a>
+							<?php 
+								if($pedido->status_ent == "realizada"):
+							?>
+								<a href="pagar?id=<?php echo $pedido->id_ped; ?>">Pagar</a>
+							<?php
+								endif;
+							?>
 							<td><a href="detallesPedido?id=<?php echo $pedido->id_ped; ?>">Detalle</a></td>
 						</td>
 					</tr>
@@ -130,7 +140,6 @@
 						<th>Teléfono</th>
 						<th>Cliente</th>
 						<th>Saldo</th>
-						<th>Pagos</th>
 						<th>Acciones</th>
 					</tr>
 				</thead>
@@ -147,10 +156,8 @@
 						<td>
 							<?php echo ($pedido->idPlaPed->plazo - $pedido->detallePedido->pagos) * $pedido->detallePedido->abono_plazo_ped; ?>
 						</td>
-						<td><?php echo $pedido->detallePedido->pagos; ?></td>
 						<td>
 							<a href="historialCliente?id=<?php echo $pedido->idCliPed->id_cli_pc; ?>">Historial</a>
-							<a href="#">Pagar</a>
 							<td><a href="detallesPedido?id=<?php echo $pedido->id_ped; ?>">Detalle</a></td>
 						</td>
 					</tr>

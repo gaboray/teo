@@ -19,6 +19,7 @@
  * @property EntregaProgramada $entregaProgramada
  * @property EntregaRealizada $entregaRealizada
  * @property Pago[] $pagos
+ * @property PagoProgramado[] $pagoProgramados
  * @property Plazo $idPlaPed
  * @property Producto $idProPed
  * @property PerfilCliente $idCliPed
@@ -68,6 +69,7 @@ class Pedido extends CActiveRecord
 			'entregaProgramada' => array(self::HAS_ONE, 'EntregaProgramada', 'id_ped_ep'),
 			'entregaRealizada' => array(self::HAS_ONE, 'EntregaRealizada', 'id_ped_er'),
 			'pagos' => array(self::HAS_MANY, 'Pago', 'id_ped_pag'),
+			'pagoProgramados' => array(self::HAS_MANY, 'PagoProgramado', 'id_ped_pp'),
 			'idPlaPed' => array(self::BELONGS_TO, 'Plazo', 'id_pla_ped'),
 			'idProPed' => array(self::BELONGS_TO, 'Producto', 'id_pro_ped'),
 			'idCliPed' => array(self::BELONGS_TO, 'PerfilCliente', 'id_cli_ped'),

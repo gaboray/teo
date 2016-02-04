@@ -310,11 +310,7 @@ class TenderoController extends Controller
 /*
 	public function actionPagos()
 	{
-		$pedidos = Pedidos::model()->with(
-			'idPla2',
-			'pagos0',
-			'idCli3',
-			'idCli3.perfilCliente'
+		$pedidos = Pedido::model()->with(
 		)->findAll();
 		$this->render('pagos', array(
 			'model'=>$pedidos

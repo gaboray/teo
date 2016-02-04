@@ -108,6 +108,7 @@
 					<td>
 
 						<span class="punto punto-<?php echo $programada->idPedEp->status_ent; ?>"></span>
+						<a href="entregar?id=<?php echo $programada->id_ped_ep; ?>">Entregar</a>
 					</td>
 				</tr>
 

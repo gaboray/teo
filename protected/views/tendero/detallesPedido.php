@@ -1,12 +1,3 @@
-<?php 
-	for($x = 0; $x<12; $x++)
-	{
-		$time = $x*2;
-		$effectiveDate = strtotime("+$time week", strtotime(date('Y-m-d'))); // returns timestamp
-		echo date('Y-m-d',$effectiveDate)."<br>"; // formatted version	
-	}
-
- ?>
 <h1>Detalles Pedido</h1>
 <div class="container">
 	<div class="row">
