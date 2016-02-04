@@ -51,7 +51,8 @@ class AdminController extends Controller
 					'getID',
 					'aceptarCredito',
 					'rechazarCredito',
-					'getRequest'
+					'getRequest',
+					'programarEntrega'
 				),
 				'users'=>array('*'),
 			),
@@ -436,11 +437,15 @@ class AdminController extends Controller
 	public function actionAceptarCredito()
 	{
 		$id = $_GET['id'];
+
 		$pedido = Pedido::model()->with(
 			'idPlaPed'
 		)->findByPk($id);
-		$pedido->status_ped = 'Activo';
 
+		$pedido->status_ped = 'Activo';
+		$pedido->status_ent = 'espera';
+
+/*
 		$plazo  	= $pedido->idPlaPed->plazo;
 		$modalidad	= $pedido->idPlaPed->modalidad;
 		for($x = 1; $x<=$plazo; $x++)
@@ -453,11 +458,14 @@ class AdminController extends Controller
 
 			$effectiveDate = strtotime("+$time week", strtotime(date('Y-m-d'))); // returns timestamp
 			echo date('Y-m-d',$effectiveDate)."<br>"; // formatted version	
-
-			
 		}
-		//if($pedido->save())
-		//	$this->redirect(array('creditos'));
+*/
+		if($pedido->save()){
+			$enEspera = new EntregaEspera();
+			$enEspera->id_ped_ee = $pedido->id_ped;
+			if($enEspera->save())
+				$this->redirect(array('creditos'));
+		}
 
 	}
 	public function actionRechazarCredito()
@@ -518,31 +526,50 @@ class AdminController extends Controller
 				$this->redirect(array('pagos'));
 		}
 	}
-
+*/
 	public function actionEntregas()
 	{
-		$programadas = EntregaProgramada::model()->with(
-			'idPed3.idCli3',
-			'idPed3.idCli3.perfilCliente',
-			'idPed3.idCli3.idTie4',
-			'idPed3.idCli3.idTie4.perfilTendero',
-			'idPed3.productosPedidoses.idPro5.detalleProducto'
+		$esperas = EntregaEspera::model()->with(
+			'idPedEe.idTiePed',
+			'idPedEe.idCliPed',
+			'idPedEe.idProPed.detalleProducto'
 		)->findAll();
 
-		$entregadas = Entrega::model()->with(
-			'idPed2.idCli3',
-			'idPed2.idCli3.perfilCliente',
-			'idPed2.idCli3.idTie4',
-			'idPed2.idCli3.idTie4.perfilTendero',
-			'idPed2.productosPedidoses.idPro5.detalleProducto'
+		$programadas = EntregaProgramada::model()->with(
+			'idPedEp.idTiePed',
+			'idPedEp.idCliPed',
+			'idPedEp.idProPed.detalleProducto'
+
+		)->findAll();
+
+		$realizadas = EntregaRealizada::model()->with(
+			'idPedEr.idTiePed',
+			'idPedEr.idCliPed',
+			'idPedEr.idProPed.detalleProducto'
+
 		)->findAll();
 		
 		$this->render('entregas', array(
+			'esperas'=>$esperas,
 			'programadas'=>$programadas,
-			'entregas'=>$entregadas,
+			'realizadas'=>$realizadas
 		));
 	}
-*/
+	public function actionProgramarEntrega(){
+		$id = $_GET['id'];
+
+		$enEspera = EntregaEspera::model()->findByPk($id);
+
+		$programada = new EntregaProgramada();
+		$programada->id_ped_ep = $enEspera->id_ped_ee;
+		$programada->status_ent = "En transito";
+		$programada->fecha_programada = date('Y-m-d');
+
+		if($programada->save())
+			if($enEspera->delete())
+				$this->redirect(array('entregas'));
+	}
+
 	public function getRequest()
 	{
 		return Pedido::model()->count("status_ped = 'Solicitado'");

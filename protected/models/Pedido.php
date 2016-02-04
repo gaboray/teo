@@ -11,14 +11,18 @@
  * @property string $id_pro_ped
  * @property string $status_ped
  * @property string $status_pag
+ * @property string $status_ent
  *
  * The followings are the available model relations:
  * @property DetallePedido $detallePedido
+ * @property EntregaEspera $entregaEspera
+ * @property EntregaProgramada $entregaProgramada
+ * @property EntregaRealizada $entregaRealizada
  * @property Pago[] $pagos
  * @property Plazo $idPlaPed
- * @property Tienda $idTiePed
  * @property Producto $idProPed
  * @property PerfilCliente $idCliPed
+ * @property PerfilTendero $idTiePed
  */
 class Pedido extends CActiveRecord
 {
@@ -38,16 +42,16 @@ class Pedido extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id_ped, id_cli_ped, id_pla_ped, id_tie_ped, id_pro_ped, status_ped, status_pag', 'required'),
+			array('id_ped, id_cli_ped, id_pla_ped, id_tie_ped, id_pro_ped, status_ped, status_pag, status_ent', 'required'),
 			array('id_pla_ped', 'numerical', 'integerOnly'=>true),
 			array('id_ped', 'length', 'max'=>19),
 			array('id_cli_ped, id_tie_ped', 'length', 'max'=>14),
 			array('id_pro_ped', 'length', 'max'=>13),
 			array('status_ped', 'length', 'max'=>10),
-			array('status_pag', 'length', 'max'=>12),
+			array('status_pag, status_ent', 'length', 'max'=>12),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id_ped, id_cli_ped, id_pla_ped, id_tie_ped, id_pro_ped, status_ped, status_pag', 'safe', 'on'=>'search'),
+			array('id_ped, id_cli_ped, id_pla_ped, id_tie_ped, id_pro_ped, status_ped, status_pag, status_ent', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -60,11 +64,14 @@ class Pedido extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'detallePedido' => array(self::HAS_ONE, 'DetallePedido', 'id_ped_dp'),
+			'entregaEspera' => array(self::HAS_ONE, 'EntregaEspera', 'id_ped_ee'),
+			'entregaProgramada' => array(self::HAS_ONE, 'EntregaProgramada', 'id_ped_ep'),
+			'entregaRealizada' => array(self::HAS_ONE, 'EntregaRealizada', 'id_ped_er'),
 			'pagos' => array(self::HAS_MANY, 'Pago', 'id_ped_pag'),
 			'idPlaPed' => array(self::BELONGS_TO, 'Plazo', 'id_pla_ped'),
-			'idTiePed' => array(self::BELONGS_TO, 'Tienda', 'id_tie_ped'),
 			'idProPed' => array(self::BELONGS_TO, 'Producto', 'id_pro_ped'),
 			'idCliPed' => array(self::BELONGS_TO, 'PerfilCliente', 'id_cli_ped'),
+			'idTiePed' => array(self::BELONGS_TO, 'PerfilTendero', 'id_tie_ped'),
 		);
 	}
 
@@ -81,6 +88,7 @@ class Pedido extends CActiveRecord
 			'id_pro_ped' => 'Id Pro Ped',
 			'status_ped' => 'Status Ped',
 			'status_pag' => 'Status Pag',
+			'status_ent' => 'Status Ent',
 		);
 	}
 
@@ -109,6 +117,7 @@ class Pedido extends CActiveRecord
 		$criteria->compare('id_pro_ped',$this->id_pro_ped,true);
 		$criteria->compare('status_ped',$this->status_ped,true);
 		$criteria->compare('status_pag',$this->status_pag,true);
+		$criteria->compare('status_ent',$this->status_ent,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

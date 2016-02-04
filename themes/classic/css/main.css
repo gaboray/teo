@@ -276,6 +276,23 @@ span.abono{
 	background: #F08080;
 	color: #fff;
 }
+
+span.punto{
+	padding: 2px 10px;
+	border-radius: 10px;
+}
+span.punto-espera{
+	background-color: #428bca;
+}
+span.punto-transito{
+	background: #5bc0de;
+}
+span.punto-reprogramada{
+	background: #f0ad4e;
+}
+span.punto-realizada{
+	background: #5cb85c;
+}
 /*
 	*
 */

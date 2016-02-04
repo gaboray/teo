@@ -49,6 +49,7 @@
 			<table class="table">
 				<thead>
 					<tr>
+						<th></th>
 						<th>Producto</th>
 						<th>Teléfono</th>
 						<th>Cliente</th>
@@ -60,6 +61,9 @@
 				<tbody>
 				<?php foreach($pedidosActivos as $pedido): ?>
 					<tr>
+						<td>
+							<span class="punto punto-<?php echo $pedido->status_ent;?>"></span>
+						</td>
 						<td><?php echo $pedido->idProPed->nombre; ?></td>
 						<td><?php echo $pedido->idCliPed->celular; ?></td>
 						<td>

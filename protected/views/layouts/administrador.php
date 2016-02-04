@@ -41,7 +41,7 @@
 					
 				<div class="row">
 					<div class="logo col-md-2">
-						<a href="goToShop"><img src="<?php echo Yii::app()->request->baseUrl ?>/images/logo1.png"></a>
+						<a href="goToShop"></a>
 					</div>
 					<div class="col-md-10">
 					    <nav>

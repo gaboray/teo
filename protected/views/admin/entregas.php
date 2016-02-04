@@ -1,153 +1,173 @@
 <h1>Entregas</h1>
 
-<h2>Programadas</h2>
-<table class="table">
-	<thead>
-		<tr>
-			<th>Fecha Aprobación</th>
-			<th>Tendero</th>
-			<th>Dirección</th>
-			<th>Ciudad</th>
-			<th>Marca</th>
-			<th>Modelo</th>
-			<th>Producto</th>
-			<th>Cliente</th>
-		</tr>
-	</thead>
-	<tbody>
-	<?php foreach($programadas as $programada): ?>
+<div class="row">
+	<div class="col-md-12">
+		<h2>En espera</h2>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Tendero</th>
+					<th>Dirección</th>
+					<th>Ciudad</th>
+					<th>Marca</th>
+					<th>Modelo</th>
+					<th>Producto</th>
+					<th>Cliente</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+			<?php foreach($esperas as $espera): ?>
 
-		<tr>
-			<td><?php echo $programada->fecha_aprobacion; ?></td>
-			<td><?php echo $programada->idPed3->idCli3->idTie4->nombre_tie; ?></td>
-			<td>
-				<?php echo $programada->idPed3->idCli3->idTie4->perfilTendero->calle_ten; ?>
-				#<?php echo $programada->idPed3->idCli3->idTie4->perfilTendero->numero_ten; ?>
-			</td>
-			<td>
-				<?php echo $programada->idPed3->idCli3->idTie4->perfilTendero->ciudad_ten; ?>,
-				<?php echo $programada->idPed3->idCli3->idTie4->perfilTendero->estado_ten; ?>
-			</td>
-			<td>
-				<?php
-					#echo $programada->idPed3->productosPedidoses->idPro5->marca_pro; 
-					$var = $programada->idPed3->productosPedidoses;
+				<tr>
+					<td>
+						<?php echo $espera->idPedEe->idTiePed->nombre; ?>
+						<?php echo $espera->idPedEe->idTiePed->a_paterno; ?>
+						<?php echo $espera->idPedEe->idTiePed->a_materno; ?>
+					</td>
+					<td>
+						<?php echo $espera->idPedEe->idTiePed->calle; ?>
+						#<?php echo $espera->idPedEe->idTiePed->numero; ?>
+						Col. <?php echo $espera->idPedEe->idTiePed->colonia; ?>
+					</td>
+					<td>
+						<?php echo $espera->idPedEe->idTiePed->ciudad; ?>
+					</td>
+					<td>
+						<?php echo $espera->idPedEe->idProPed->marca; ?>
+					</td>
+					<td>
+						<?php echo $espera->idPedEe->idProPed->detalleProducto->modelo; ?>
+					</td>
+					<td>
+						<?php echo $espera->idPedEe->idProPed->nombre; ?>
+					</td>
+					<td>
+						<?php echo $espera->idPedEe->idCliPed->nombre; ?>
+						<?php echo $espera->idPedEe->idCliPed->a_paterno; ?>
+						<?php echo $espera->idPedEe->idCliPed->a_materno; ?>
+					</td>
+					<td>
+						<a href="programarEntrega?id=<?php echo $espera->id_ped_ee; ?>">Programar</a>
+					</td>
+				</tr>
 
-					$product = array();
-					$i = 0;
+			<?php endforeach; ?>
+			</tbody>
+		</table>
+	</div>
+</div>
 
-					foreach ($var as $key) {
-						#echo var_dump($key->idPro5);
-						$product[$i][0] = $key->idPro5->marca_pro;
-						$product[$i][1] = $key->idPro5->detalleProducto->modelo_pro;
-						$product[$i][2] = $key->idPro5->nombre_pro;
+<div class="row">
+	<div class="col-md-12">
+		<h2>Programadas</h2>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Tendero</th>
+					<th>Dirección</th>
+					<th>Ciudad</th>
+					<th>Marca</th>
+					<th>Modelo</th>
+					<th>Producto</th>
+					<th>Cliente</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+			<?php foreach($programadas as $programada): ?>
 
-						echo $product[$i][0]."<br>";
-						$i++;
-					}
-				?>
-			</td>
-			<td>
-				<?php #echo $programada->idPed3->productosPedidoses->idPro5->detalleProducto->modelo_pro; ?>
-				<?php 
-					foreach ($product as $key) {
-						#echo var_dump($key);
-						echo $key[1]."<br>";
-					}
-				?>
-			</td>
-			<td>
-				<?php #echo $programada->idPed3->productosPedidoses->idPro5->detalleProducto->modelo_pro; ?>
-				<?php 
-					foreach ($product as $key) {
-						#echo var_dump($key);
-						echo $key[2]."<br>";
-					}
-				?>
-			</td>
-			<td>
-				<?php echo $programada->idPed3->idCli3->perfilCliente->nombre_cli; ?>
-				<?php echo $programada->idPed3->idCli3->perfilCliente->a_paterno_cli; ?>
-				<?php echo $programada->idPed3->idCli3->perfilCliente->a_materno_cli; ?>
-			</td>
-		</tr>
+				<tr>
+					<td>
+						<?php echo $programada->idPedEp->idTiePed->nombre; ?>
+						<?php echo $programada->idPedEp->idTiePed->a_paterno; ?>
+						<?php echo $programada->idPedEp->idTiePed->a_materno; ?>
+					</td>
+					<td>
+						<?php echo $programada->idPedEp->idTiePed->calle; ?>
+						#<?php echo $programada->idPedEp->idTiePed->numero; ?>
+						Col. <?php echo $programada->idPedEp->idTiePed->colonia; ?>
+					</td>
+					<td>
+						<?php echo $programada->idPedEp->idTiePed->ciudad; ?>
+					</td>
+					<td>
+						<?php echo $programada->idPedEp->idProPed->marca; ?>
+					</td>
+					<td>
+						<?php echo $programada->idPedEp->idProPed->detalleProducto->modelo; ?>
+					</td>
+					<td>
+						<?php echo $programada->idPedEp->idProPed->nombre; ?>
+					</td>
+					<td>
+						<?php echo $programada->idPedEp->idCliPed->nombre; ?>
+						<?php echo $programada->idPedEp->idCliPed->a_paterno; ?>
+						<?php echo $programada->idPedEp->idCliPed->a_materno; ?>
+					</td>
+					<td>
 
-	<?php endforeach; ?>
-	</tbody>
-</table>
+						<span class="punto punto-<?php echo $programada->idPedEp->status_ent; ?>"></span>
+					</td>
+				</tr>
 
-<h2>Realizadas</h2>
-<table class="table">
-	<thead>
-		<tr>			
-			<th>Fecha Aprobación</th>
-			<th>Tendero</th>
-			<th>Dirección</th>
-			<th>Ciudad</th>
-			<th>Marca</th>
-			<th>Modelo</th>
-			<th>Producto</th>
-			<th>Cliente</th>
-		</tr>
-	</thead>
-	<tbody>
-		<?php foreach($entregas as $entrega): ?>
-			
-		<tr>
-			<td><?php echo $entrega->fecha_aprobacion; ?></td>
-			<td><?php echo $entrega->idPed2->idCli3->idTie4->nombre_tie; ?></td>
-			<td>
-				<?php echo $entrega->idPed2->idCli3->idTie4->perfilTendero->calle_ten; ?>
-				#<?php echo $entrega->idPed2->idCli3->idTie4->perfilTendero->numero_ten; ?>
-			</td>
-			<td>
-				<?php echo $entrega->idPed2->idCli3->idTie4->perfilTendero->ciudad_ten; ?>,
-				<?php echo $entrega->idPed2->idCli3->idTie4->perfilTendero->estado_ten; ?>
-			</td>
-			<td>
-				<?php
-					#echo $entrega->idPed2->productosPedidoses->idPro5->marca_pro; 
-					$var = $entrega->idPed2->productosPedidoses;
+			<?php endforeach; ?>
+			</tbody>
+		</table>
+	</div>
+</div>
 
-					$product = array();
-					$i = 0;
 
-					foreach ($var as $key) {
-						#echo var_dump($key->idPro5);
-						$product[$i][0] = $key->idPro5->marca_pro;
-						$product[$i][1] = $key->idPro5->detalleProducto->modelo_pro;
-						$product[$i][2] = $key->idPro5->nombre_pro;
+<div class="row">
+	<div class="col-md-12">
+		<h2>Realizadas</h2>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Tendero</th>
+					<th>Dirección</th>
+					<th>Ciudad</th>
+					<th>Marca</th>
+					<th>Modelo</th>
+					<th>Producto</th>
+					<th>Cliente</th>
+				</tr>
+			</thead>
+			<tbody>
+			<?php foreach($realizadas as $realizada): ?>
 
-						echo $product[$i][0]."<br>";
-						$i++;
-					}
-				?>
-			</td>
-			<td>
-				<?php #echo $entrega->idPed2->productosPedidoses->idPro5->detalleProducto->modelo_pro; ?>
-				<?php 
-					foreach ($product as $key) {
-						#echo var_dump($key);
-						echo $key[1]."<br>";
-					}
-				?>
-			</td>
-			<td>
-				<?php #echo $entrega->idPed2->productosPedidoses->idPro5->detalleProducto->modelo_pro; ?>
-				<?php 
-					foreach ($product as $key) {
-						#echo var_dump($key);
-						echo $key[2]."<br>";
-					}
-				?>
-			</td>
-			<td>
-				<?php echo $entrega->idPed2->idCli3->perfilCliente->nombre_cli; ?>
-				<?php echo $entrega->idPed2->idCli3->perfilCliente->a_paterno_cli; ?>
-				<?php echo $entrega->idPed2->idCli3->perfilCliente->a_materno_cli; ?>
-			</td>
-		</tr>
+				<tr>
+					<td>
+						<?php echo $realizada->idPedEr->idTiePed->nombre; ?>
+						<?php echo $realizada->idPedEr->idTiePed->a_paterno; ?>
+						<?php echo $realizada->idPedEr->idTiePed->a_materno; ?>
+					</td>
+					<td>
+						<?php echo $realizada->idPedEr->idTiePed->calle; ?>
+						#<?php echo $realizada->idPedEr->idTiePed->numero; ?>
+						Col. <?php echo $realizada->idPedEr->idTiePed->colonia; ?>
+					</td>
+					<td>
+						<?php echo $realizada->idPedEr->idTiePed->ciudad; ?>
+					</td>
+					<td>
+						<?php echo $realizada->idPedEr->idProPed->marca; ?>
+					</td>
+					<td>
+						<?php echo $realizada->idPedEr->idProPed->detalleProducto->modelo; ?>
+					</td>
+					<td>
+						<?php echo $realizada->idPedEr->idProPed->nombre; ?>
+					</td>
+					<td>
+						<?php echo $realizada->idPedEr->idCliPed->nombre; ?>
+						<?php echo $realizada->idPedEr->idCliPed->a_paterno; ?>
+						<?php echo $realizada->idPedEr->idCliPed->a_materno; ?>
+					</td>
+				</tr>
 
-		<?php endforeach; ?>
-	</tbody>
-</table>
+			<?php endforeach; ?>
+			</tbody>
+		</table>
+	</div>
+</div>
