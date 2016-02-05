@@ -77,8 +77,14 @@
 						<td><?php echo $pedido->detallePedido->pagos; ?></td>
 						<td>
 							<a href="historialCliente?id=<?php echo $pedido->idCliPed->id_cli_pc; ?>">Historial</a>
-							<a href="#">Pagar</a>
-							<a href="#">Detalle</a>
+							<?php 
+								if($pedido->status_ent == "realizada"):
+							?>
+							<?php echo CHtml::link("Pagar", array("agregarPago?id=".$pedido->id_ped), array('confirm'=>'¿Realmente desea confirmar el pago?')); ?>
+							<?php
+								endif;
+							?>
+							<a href="detallesPedido?id=<?php echo $pedido->id_ped; ?>">Detalle</a>
 						</td>
 					</tr>
 				<?php endforeach; ?>

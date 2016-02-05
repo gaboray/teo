@@ -39,7 +39,7 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-md-8">
+		<div class="col-md-5">
 			<?php $var = $pedido->pagos; ?>
 			<?php echo CHtml::link("Agregar", array("agregarPago?id=".$pedido->id_ped), array('confirm'=>'¿Realmente desea confirmar el pago?')); ?><br>
 			<?php if ($var != null): ?>

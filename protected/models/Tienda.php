@@ -35,7 +35,8 @@ class Tienda extends CActiveRecord
 		return array(
 			array('id_tie, celular, password', 'required'),
 			array('id_tie', 'length', 'max'=>14),
-			array('celular, password', 'length', 'max'=>10),
+			array('celular', 'length', 'max'=>10),
+			array('password', 'length', 'max'=>4),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id_tie, celular, password', 'safe', 'on'=>'search'),

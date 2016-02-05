@@ -74,11 +74,11 @@
 							<?php 
 								if($pedido->status_ent == "realizada"):
 							?>
-								<a href="pagar?id=<?php echo $pedido->id_ped; ?>">Pagar</a>
+							<?php echo CHtml::link("Pagar", array("agregarPago?id=".$pedido->id_ped), array('confirm'=>'¿Realmente desea confirmar el pago?')); ?>
 							<?php
 								endif;
 							?>
-							<td><a href="detallesPedido?id=<?php echo $pedido->id_ped; ?>">Detalle</a></td>
+							<a href="detallesPedido?id=<?php echo $pedido->id_ped; ?>">Detalle</a>
 						</td>
 					</tr>
 				<?php endforeach; ?>

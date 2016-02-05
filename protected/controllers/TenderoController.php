@@ -392,16 +392,22 @@ class TenderoController extends Controller
 	{
 		$id = $_GET['id'];
 
-		$pagoProgramado = PagoProgramado::model()->find(array(
-			"condition"=>"id_ped_pp= '".$id."'",
-			"order"=>"fecha ASC"
-		));
+		$pagoProgramado = PagoProgramado::model()->find(
+			array(
+				"condition"=>"id_ped_pp= '".$id."'",
+				"order"=>"fecha ASC"
+			)
+		);
+
+		$fechaActual = date("Y-m-d");
 
 		$pago = new Pago();
 		$pago->id_ped_pag = $id;
 		$pago->fecha_programada = $pagoProgramado->fecha;
-		$pago->fecha_pago = date("Y-m-d");
-		echo var_dump($pago);
+		$pago->fecha_pago = $fechaActual;
+
+		$idPed = $pagoProgramado->id_ped_pp;
+
 		
 		if($pago->save())
 		{
@@ -410,7 +416,37 @@ class TenderoController extends Controller
 			$pedido->pagos++;
 			if($pedido->save()){
 				if($pagoProgramado->delete())
-					$this->redirect(array('creditos'));
+				{
+					/*
+					$tienda = Tienda::model()->with(
+						'clientes.datosCliente',
+						'datosTendero'
+					)->findByPk('t56a3d93e90856');
+
+					$status = "Al corriente";
+					foreach($tienda->clientes as $cliente)
+					{
+						if($cliente->datosCliente->status_pago == "En mora")
+						{
+							$status = "En mora";
+							break;
+						}
+					}
+					if($status == "Al corriente")
+					{
+						if($tienda->datosTendero->status_pago == "En mora")
+						{
+							$tienda->datosTendero->status_pago = "Al corriente";
+						}
+					}else{
+						$tienda->datosTendero->status_pago = "En Mora";
+					}
+					*/
+					#if($tienda->datosTendero->save())
+					#{
+						$this->redirect(array('creditos'));
+					#}
+				}
 			}
 		}
 		

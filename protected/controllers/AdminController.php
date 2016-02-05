@@ -53,7 +53,10 @@ class AdminController extends Controller
 					'rechazarCredito',
 					'getRequest',
 					'programarEntrega',
-					'entregar'
+					'entregar',
+					'detallesPedido',
+					'agregarPago',
+					'historialCliente'
 				),
 				'users'=>array('*'),
 			),
@@ -347,6 +350,7 @@ class AdminController extends Controller
 					$datosTendero->saldo_semana = '0';
 					$datosTendero->cobrado_semana = '0';
 					$datosTendero->status = 'Inactivo';
+					$datosTendero->status_pago = 'Al corriente';
 					$datosTendero->fecha_alta = date('Y-m-d');
 
 					if($datosTendero->save())
@@ -478,7 +482,70 @@ class AdminController extends Controller
 			$this->redirect(array('creditos'));
 
 	}
-/*
+
+	public function actionhistorialCliente()
+	{
+		$id = $_GET['id'];
+
+		$perfil = PerfilCliente::model()->findByPk($id);
+		$datos = DatosCliente::model()->findByPk($id);
+		$pedidos = Pedido::model()->with(
+			'idProPed',
+			'idPlaPed',
+			'detallePedido'
+		)->findAll("id_cli_ped = '".$id."'");
+		#Yii::app()->user->setFlash("model", "Abriendo modal");
+
+		$this->render('historialCliente', array(
+			'perfil'=>$perfil,
+			'datos'=>$datos,
+			'pedidos'=>$pedidos
+		));
+	}
+	public function actionDetallesPedido()
+	{
+		$id = $_GET['id'];
+		$pedido = Pedido::model()->with(
+			'idProPed',
+			'detallePedido',
+			'pagos',
+			'idCliPed',
+			'idPlaPed'
+		)->find("id_ped = '".$id."'");
+
+		$this->render('detallesPedido', array(
+			'pedido'=>$pedido
+		));
+	}
+
+	public function actionAgregarPago()
+	{
+		$id = $_GET['id'];
+
+		$pagoProgramado = PagoProgramado::model()->find(array(
+			"condition"=>"id_ped_pp= '".$id."'",
+			"order"=>"fecha ASC"
+		));
+
+		$pago = new Pago();
+		$pago->id_ped_pag = $id;
+		$pago->fecha_programada = $pagoProgramado->fecha;
+		$pago->fecha_pago = date("Y-m-d");
+		echo var_dump($pago);
+		
+		if($pago->save())
+		{
+			$pedido = DetallePedido::model()->findByPk($id);
+
+			$pedido->pagos++;
+			if($pedido->save()){
+				if($pagoProgramado->delete())
+					$this->redirect(array('creditos'));
+			}
+		}
+		
+	}
+
 	public function actionPagos()
 	{
 
@@ -498,7 +565,7 @@ class AdminController extends Controller
 			'pagosProgramados'=>$pagosProgramados
 		));
 	}
-
+/*
 	public function actionHistorialTendero($id)
 	{
 		$tienda = Tienda::model()->with(

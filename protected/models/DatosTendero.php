@@ -11,11 +11,12 @@
  * @property integer $saldo_semana
  * @property integer $cobrado_semana
  * @property string $status
+ * @property string $status_pago
  * @property string $fecha_alta
  *
  * The followings are the available model relations:
- * @property Pantalla $idPanDatTen
  * @property Tienda $idTieDatTen
+ * @property Pantalla $idPanDatTen
  */
 class DatosTendero extends CActiveRecord
 {
@@ -35,13 +36,14 @@ class DatosTendero extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id_tie_dat_ten, id_pan_dat_ten, creditos, saldo_historia, saldo_semana, cobrado_semana, status, fecha_alta', 'required'),
+			array('id_tie_dat_ten, id_pan_dat_ten, creditos, saldo_historia, saldo_semana, cobrado_semana, status, status_pago, fecha_alta', 'required'),
 			array('id_pan_dat_ten, creditos, saldo_historia, saldo_semana, cobrado_semana', 'numerical', 'integerOnly'=>true),
 			array('id_tie_dat_ten', 'length', 'max'=>14),
-			array('status', 'length', 'max'=>13),
+			array('status', 'length', 'max'=>8),
+			array('status_pago', 'length', 'max'=>12),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id_tie_dat_ten, id_pan_dat_ten, creditos, saldo_historia, saldo_semana, cobrado_semana, status, fecha_alta', 'safe', 'on'=>'search'),
+			array('id_tie_dat_ten, id_pan_dat_ten, creditos, saldo_historia, saldo_semana, cobrado_semana, status, status_pago, fecha_alta', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -53,8 +55,8 @@ class DatosTendero extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'idPanDatTen' => array(self::BELONGS_TO, 'Pantalla', 'id_pan_dat_ten'),
 			'idTieDatTen' => array(self::BELONGS_TO, 'Tienda', 'id_tie_dat_ten'),
+			'idPanDatTen' => array(self::BELONGS_TO, 'Pantalla', 'id_pan_dat_ten'),
 		);
 	}
 
@@ -71,6 +73,7 @@ class DatosTendero extends CActiveRecord
 			'saldo_semana' => 'Saldo Semana',
 			'cobrado_semana' => 'Cobrado Semana',
 			'status' => 'Status',
+			'status_pago' => 'Status Pago',
 			'fecha_alta' => 'Fecha Alta',
 		);
 	}
@@ -100,6 +103,7 @@ class DatosTendero extends CActiveRecord
 		$criteria->compare('saldo_semana',$this->saldo_semana);
 		$criteria->compare('cobrado_semana',$this->cobrado_semana);
 		$criteria->compare('status',$this->status,true);
+		$criteria->compare('status_pago',$this->status_pago,true);
 		$criteria->compare('fecha_alta',$this->fecha_alta,true);
 
 		return new CActiveDataProvider($this, array(
