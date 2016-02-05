@@ -39,8 +39,9 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-md-12">
+		<div class="col-md-8">
 			<?php $var = $pedido->pagos; ?>
+			<?php echo CHtml::link("Agregar", array("agregarPago?id=".$pedido->id_ped), array('confirm'=>'¿Realmente desea confirmar el pago?')); ?><br>
 			<?php if ($var != null): ?>
 			<table class="table">
 				<thead>
@@ -52,8 +53,8 @@
 				<tbody>
 				<?php foreach($var as $key): ?>
 					<tr>
-						<td><?php echo $key->fecha_pag; ?></td>	
-						<td>$<?php echo $pedido->abono_plazo_ped; ?></td>
+						<td><?php echo $key->fecha_pago; ?></td>	
+						<td>$<?php echo $pedido->detallePedido->abono_plazo_ped; ?></td>
 					</tr>
 				<?php endforeach; ?>
 				</tbody>

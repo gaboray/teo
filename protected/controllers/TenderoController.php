@@ -42,7 +42,8 @@ class TenderoController extends Controller
 					'rechazarSolicitud',
 					'perdonarCliente',
 					'enable',
-					'detallesPedido'
+					'detallesPedido',
+					'agregarPago'
 				),
 				'users'=>array('*'),
 			),
@@ -387,6 +388,35 @@ class TenderoController extends Controller
 			'pedido'=>$pedido
 		));
 	}
+	public function actionAgregarPago()
+	{
+		$id = $_GET['id'];
+
+		$pagoProgramado = PagoProgramado::model()->find(array(
+			"condition"=>"id_ped_pp= '".$id."'",
+			"order"=>"fecha ASC"
+		));
+
+		$pago = new Pago();
+		$pago->id_ped_pag = $id;
+		$pago->fecha_programada = $pagoProgramado->fecha;
+		$pago->fecha_pago = date("Y-m-d");
+		echo var_dump($pago);
+		
+		if($pago->save())
+		{
+			$pedido = DetallePedido::model()->findByPk($id);
+
+			$pedido->pagos++;
+			if($pedido->save()){
+				if($pagoProgramado->delete())
+					$this->redirect(array('creditos'));
+			}
+		}
+		
+	}
+
+
 
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.

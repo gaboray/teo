@@ -30,8 +30,7 @@ class Pago extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, id_ped_pag, fecha_programada, fecha_pago', 'required'),
-			array('id', 'numerical', 'integerOnly'=>true),
+			array('id_ped_pag, fecha_programada, fecha_pago', 'required'),
 			array('id_ped_pag', 'length', 'max'=>19),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
