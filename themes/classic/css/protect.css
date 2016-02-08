@@ -1,0 +1,97 @@
+div#protect{
+	position: fixed;
+	width: 100%;
+	height: 100%;
+}
+#slider-content{
+	position: fixed;
+	background: rgba(0,0,0,.5);
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	margin: 0;
+	top: 0;
+}
+#slider-content img{
+	position: absolute;
+	opacity: 0;
+}
+#slider-content  img.img-lg{
+	width: 500px;
+}
+#slider-content  img.img-md{
+	width: 400px;
+}
+#slider-content  img.img-sm{
+	width: 300px;
+}
+.top-lg{
+	margin-top: 400px;
+}
+.top-md{
+	margin-top: 200px;
+}
+.top-sm{
+	margin-top: 100px;
+}
+
+.slide span.text{
+	font-size: 30px;
+	color: #fff;
+}
+
+#slide1{
+}
+#slide1 #logo{
+	width: 250px;
+	position: relative;	
+	padding: 30px;
+}
+button#entry{
+	padding: 20px 30px;
+	font-size: 30px;
+	color: #fff;
+	font-weight: bold;
+	background: #15A2CE;
+	border-radius: 40px;
+}
+.slide span#lema{
+	font-size: 50px;
+	color: #FB9337;	
+	font-weight: bold;
+}
+/*
+	*	SLIDE 1
+*/
+#slide2 .slide-title{
+	font-size: 50px;
+	color:	#F09429;
+	position: absolute;
+	right: 100px;
+	opacity: 0;
+}
+#slide2 #img1{
+	
+}
+#slide2 #img2{
+	left: 300px;
+}
+#slide2 #img3{
+	left: 600px;
+}
+#slide2 #img4{
+	left: 1000px;
+	top: 300px;
+}
+/*
+	*	END	SLIDE 1
+*/
+
+div.alter-modal p{
+	font-size: 2em;
+}
+div.alter-modal span{
+	font-size: 3em;
+	font-weight: bold;
+	color: #FB9337;	
+}

@@ -46,6 +46,10 @@
 		</div>
 		<div class="col-md-6">
 			<h2>Activos</h2>
+			<span class="punto punto-espera"></span>	&nbsp En espera &nbsp &nbsp
+			<span class="punto punto-transito"></span>&nbsp En tránsito &nbsp &nbsp
+			<span class="punto punto-reprogramada"></span>&nbsp Reprogramada &nbsp &nbsp
+			<span class="punto punto-realizada"></span>&nbsp Realizada &nbsp &nbsp
 			<table class="table">
 				<thead>
 					<tr>
@@ -146,7 +150,6 @@
 						<th>Teléfono</th>
 						<th>Cliente</th>
 						<th>Saldo</th>
-						<th>Pagos</th>
 						<th>Acciones</th>
 					</tr>
 				</thead>
@@ -163,11 +166,9 @@
 						<td>
 							<?php echo ($pedido->idPlaPed->plazo - $pedido->detallePedido->pagos) * $pedido->detallePedido->abono_plazo_ped; ?>
 						</td>
-						<td><?php echo $pedido->detallePedido->pagos; ?></td>
 						<td>
 							<a href="historialCliente?id=<?php echo $pedido->idCliPed->id_cli_pc; ?>">Historial</a>
-							<a href="#">Pagar</a>
-							<a href="#">Detalle</a>
+							<a href="detallesPedido?id=<?php echo $pedido->id_ped; ?>">Detalle</a>
 						</td>
 					</tr>
 				<?php endforeach; ?>

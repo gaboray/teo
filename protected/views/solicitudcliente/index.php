@@ -29,6 +29,7 @@ position:absolute; width:100%; height:100%; background-size:100%; background-pos
     </div>
     <div class="form-group">
       <div class="col-sm-offset-4 col-sm-8">
+        <a href="<?php echo Yii::app()->request->urlReferrer; ?>" class="btn btn-default">Volver</a>
         <button type="submit" class="btn btn-success">Enviar</button>
       </div>
     </div>

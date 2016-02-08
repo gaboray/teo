@@ -308,17 +308,27 @@ class TenderoController extends Controller
 			'pedidosRechazados'=>$pedidosRechazados
 		));
 	}
-/*
+
 	public function actionPagos()
 	{
+		$pagos = Pago::model()->with(
+			'idPedPag.idCliPed',
+			'idPedPag.idTiePed',
+			'idPedPag.detallePedido'
+		)->findAll();
+
+		$this->render('pagos', array(
+			'pagos'=>$pagos
+		));
+		/*
 		$pedidos = Pedido::model()->with(
 		)->findAll();
 		$this->render('pagos', array(
 			'model'=>$pedidos
 		));
+		*/
 	}
-
-
+/*
 	public function actionEditarCliente($id)
 	{
 		$cliente = PerfilCliente::model()->findByPk($id);
@@ -405,18 +415,26 @@ class TenderoController extends Controller
 		$pago->id_ped_pag = $id;
 		$pago->fecha_programada = $pagoProgramado->fecha;
 		$pago->fecha_pago = $fechaActual;
-
-		$idPed = $pagoProgramado->id_ped_pp;
-
 		
-		if($pago->save())
-		{
+		#if($pago->save())
+		#{
 			$pedido = DetallePedido::model()->findByPk($id);
 
 			$pedido->pagos++;
-			if($pedido->save()){
-				if($pagoProgramado->delete())
-				{
+			#if($pedido->save()){
+			#	if($pagoProgramado->delete())
+			#	{
+					$datosPedido = Pedido::model()->findByPk($id);
+
+					$pagosEnMora = PagoProgramado::model()->count("id_ped_pp = '".$id."' AND fecha < '".$fechaActual."'");
+					echo $pagosEnMora;
+					if($pagosEnMora > 0){
+						$datosPedido->status_pag = "En mora";
+					}else{
+						$datosPedido->status_pag = "Al corriente";
+					}
+					$datosPedido->save();
+					
 					/*
 					$tienda = Tienda::model()->with(
 						'clientes.datosCliente',
@@ -444,11 +462,11 @@ class TenderoController extends Controller
 					*/
 					#if($tienda->datosTendero->save())
 					#{
-						$this->redirect(array('creditos'));
+						#$this->redirect(array('creditos'));
 					#}
-				}
-			}
-		}
+			#	}
+			#}
+		#}
 		
 	}
 

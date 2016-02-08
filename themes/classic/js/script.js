@@ -101,6 +101,11 @@ $(document).on('ready', function(){
     $('button#addSubmit').on('click', function(){
       var itemName = $('h1.item-name').html();
       $('span#item-name').html(itemName);
+      var itemAbono = $('.abono').html();
+      var itemModalidad = $('.payment2').html();
+
+      $('span#item-abono').html(itemAbono);
+      $('span#item-modalidad').html(itemModalidad);
 
       $('div#slideUp').css({
         'right': '0'

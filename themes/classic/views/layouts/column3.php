@@ -7,7 +7,12 @@
 			<div class="row">
 				<div class="col-sm-12">
 					<center>
+					<a href="gotoshop">
 						<img src="<?php echo Yii::app()->request->baseUrl; ?>/images/teocredit/logo2.png" class="logo">
+					</a>
+
+						
+
 					</center>
 				</div>
 			</div>

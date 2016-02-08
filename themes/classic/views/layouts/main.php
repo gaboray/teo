@@ -34,7 +34,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     
 <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/marilyn.png" id="assistant">
-
 <div class="container-fluid">
 <br>
 	<?php echo $content; ?>
@@ -66,13 +65,18 @@
   				</div>
   				<div class="col-md-9">
   					<p class="contenido">Usted disfrutará de un(a) <span id="item-name"></span>
-  					bla bla bla..
   					</p>
+            <p class="contenido">Pagando $<span id="item-abono"></span> <span id="item-modalidad"></span></p>
   				</div>
   			</div>
+        <br><br>
   			<div class="row footer">
-  				<button class="btn btn-default btn-lg" type="button" id="cancel">Cancelar</button>
-  				<button class="btn btn-primary btn-lg" type="button" id="confirm">Confirmar</button>
+          <div class="col-md-4 col-md-offset-1">
+            <button class="btn btn-default btn-lg btn-block" type="button" id="cancel">Cancelar</button>
+          </div>
+          <div class="col-md-4">
+            <button class="btn btn-primary btn-lg btn-block" type="button" id="confirm">Confirmar</button>
+          </div>
   			</div>
   		</div>
   	</div>

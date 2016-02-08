@@ -21,7 +21,6 @@ class Controller extends CController
 	 */
 	public $breadcrumbs=array();
 
-
 	public $elementsInCar = 0;#Cesta::model()->count('id_cli_2 = 1;', '');
 
 	public function getElementsInCar()

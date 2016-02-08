@@ -65,6 +65,7 @@ class ShopController extends Controller
 				$pedido->id_tie_ped = $cliente->id_tie_cli;
 				$pedido->status_ped = 'Solicitado';
 				$pedido->status_pag = 'Al corriente';
+				$pedido->status_ent = 'espera';
 				if($pedido->save())
 				{
 					$detallePedido = new DetallePedido();
@@ -157,6 +158,17 @@ class ShopController extends Controller
 			'plazos'=>$plazos));
 	}
 */
+	public function actionConfirmUser()
+	{
+		$celular = $_POST['Cliente']['celular'];
+		$esCliente = Cliente::model()->find('celular = '.$celular);
+		if($esCliente){
+			$this->redirect(array('categoria?name=1'));
+		}else{
+			$this->redirect(array('index'));
+		}
+	}
+
 	public function actionRegistro()
 	{
 			$this->redirect(array("solicitudCliente/"));

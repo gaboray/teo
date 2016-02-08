@@ -61,6 +61,9 @@
 <div class="row">
 	<div class="col-md-12">
 		<h2>Programadas</h2>
+
+			<span class="punto punto-transito"></span>&nbsp En tránsito &nbsp &nbsp
+			<span class="punto punto-reprogramada"></span>&nbsp Reprogramada &nbsp &nbspx
 		<table class="table">
 			<thead>
 				<tr>
