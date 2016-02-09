@@ -28,10 +28,18 @@
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
 
-<body>
+<body id="shop">
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+    <header>
+    </header>
+
+      <div id="logo-content">
+        <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/teocredit/logoh.png" class="logo">
+        <span class="glyphicon glyphicon-chevron-down"></span>
+      </div>
     
 <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/marilyn.png" id="assistant">
 <div class="container-fluid">

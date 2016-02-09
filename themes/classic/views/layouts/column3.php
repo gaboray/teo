@@ -8,7 +8,6 @@
 				<div class="col-sm-12">
 					<center>
 					<a href="gotoshop">
-						<img src="<?php echo Yii::app()->request->baseUrl; ?>/images/teocredit/logo2.png" class="logo">
 					</a>
 
 						
@@ -16,14 +15,15 @@
 					</center>
 				</div>
 			</div>
-			<div class="row">
+			<div class="row">	
 				<div class="categories">
 					<nav>
 						<ul>		
 						<?php $categorias = $this->getCategories(); ?>	
 
 						<?php foreach ($categorias as $categoria): ?>
-							<a href="<?php echo Yii::app()->request->baseUrl ?>/shop/categoria?name=<?php echo $categoria->id_cat; ?>" class="no-decoration">
+							<a href="<?php echo Yii::app()->request->baseUrl ?>/shop/categoria?name=<?php echo $categoria->id_cat; ?>" class="no-decoration"
+							id="c<?php echo $categoria->id_cat; ?>">
 								<div class="line-category">
 								<div class="img-category">
 									<img src="<?php echo Yii::app()->request->baseUrl ?>/images/categorias/<?php echo $categoria->perfil; ?>" class="img-circle">		
