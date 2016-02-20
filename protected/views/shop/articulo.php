@@ -21,9 +21,9 @@
       </div>
 
     </div>
-    <div class="col-md-8">
+    <div class="col-md-8" style="color:#fff;">
       <h1 class="item-name"><?php echo CHtml::encode($datosProducto->nombre); ?></h1>
-      <p class="descripcion">
+      <p class="descripcion" style="color:#fff;">
         <?php echo CHtml::encode($datosProducto->detalleProducto->detalles); ?>
       </p>
       <div class="col-md-6">
@@ -33,7 +33,7 @@
         <span class="abono"></span>
         <span class="payment2"><i>Por favor escoja su plazo de pago</i></span>
         <br>
-        <a id="verEspecificacion" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        <a id="verEspecificacion" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" style="color:#fff;">
           <span class="glyphicon glyphicon-plus"></span>&nbsp Ver especificaciones
         </a>
       </div>

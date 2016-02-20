@@ -72,8 +72,8 @@
 						</a>
 					</td>		
 					<td>
-						<?php echo CHtml::link('Editar', array('editarCliente','id'=>$cliente->id_cli)); ?> |
-						<?php echo CHtml::link('Ficha', array('fichaCliente','id'=>$cliente->id_cli)); ?>
+						<?php #echo CHtml::link('Editar', array('editarCliente','id'=>$cliente->id_cli)); ?> 
+						<?php #echo CHtml::link('Ficha', array('fichaCliente','id'=>$cliente->id_cli)); ?>
 					</td>
 				</tr>
 			<?php endforeach; ?>
@@ -113,7 +113,9 @@
 					<td><?php echo $rechazado->fecha_rec; ?></td>
 					<td>
 						<a href="perdonarCliente/<?php echo $rechazado->id_rec; ?>" title="Perdonar" class="no-decoration">
-							<span class="icon-mood font20"></span>
+							<?php /* ?>
+								span class="icon-mood font20"></span>
+							<?php */ ?>
 						</a>
 					</td>
 				</tr>

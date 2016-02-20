@@ -47,14 +47,14 @@
 					    <nav>
 							<?php $this->widget('zii.widgets.CMenu',array(
 								'items'=>array(
-									array('label'=>'Panel', 'url'=>array('/admin/panel')),
+									#array('label'=>'Panel', 'url'=>array('/admin/panel')),
 									array('label'=>'Catálogo', 'url'=>array('/admin/catalogo')),
 									array('label'=>'Cartera', 'url'=>array('/admin/cartera')),
 									array('label'=>'	Créditos', 'url'=>array('/admin/creditos')),
 									array('label'=>'Pagos', 'url'=>array('/admin/pagos')),
 									array('label'=>'Entregas', 'url'=>array('/admin/entregas')),
-									array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
-									array('label'=>'Salir ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
+									#array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
+									#array('label'=>'Salir ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
 								),
 								'itemCssClass'=>'no-decoration white in-line',
 							)); ?>

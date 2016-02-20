@@ -49,7 +49,7 @@
 					    <nav>
 							<?php $this->widget('zii.widgets.CMenu',array(
 								'items'=>array(
-									array('label'=>'Panel', 'url'=>array('/tendero/panel')),
+									#array('label'=>'Panel', 'url'=>array('/tendero/panel')),
 									array('label'=>'Cartera', 'url'=>array('/tendero/cartera')),
 									array('label'=>'Créditos', 'url'=>array('/tendero/creditos')),
 									array('label'=>'Pagos', 'url'=>array('/tendero/pagos'))/*,

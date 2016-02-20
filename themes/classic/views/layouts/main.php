@@ -19,9 +19,12 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/main.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/cesta.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/fonts/style.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="<?php echo Yii::app()->theme->baseUrl ?>/js/script.js"></script>
+    <script src="<?php echo Yii::app()->theme->baseUrl ?>/js/main.js"></script>
+
 
 
 
@@ -30,16 +33,22 @@
 
 <body id="shop">
 
+  <center>
+    <i class="fa fa-spinner fa-pulse" id="loading-content"></i>
+  </center>
+
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
     <header>
     </header>
-
+      <a href="index" class="no-decoration">
+        
       <div id="logo-content">
         <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/teocredit/logoh.png" class="logo">
         <span class="glyphicon glyphicon-chevron-down"></span>
       </div>
+      </a>
     
 <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/marilyn.png" id="assistant">
 <div class="container-fluid">
@@ -54,11 +63,11 @@
 	<div id="help">
 		<small>¿Necesitas Ayuda?</small>
 	</div>
-
+  
 	<footer>
-		<a href="#" class="in-line">Términos y Condiciones</a>
-		<a href="#" class="in-line">Aviso de Privacidad</a>
-		<a href="#" class="in-line">Servicio al Cliente</a>
+		<a href="#" class="in-line no-decoration white">Términos y Condiciones</a>
+		<a href="#" class="in-line no-decoration white">Aviso de Privacidad</a>
+		<a href="#" class="in-line no-decoration white">Servicio al Cliente</a>
 	</footer>
 
 

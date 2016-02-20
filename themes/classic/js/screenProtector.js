@@ -3,7 +3,7 @@ $(document).on('ready', function(){
 	$('button#entry').on('click', function(){
 		var title = "Ingresa";
 
-		var content = '<form class="form-horizontal" action="confirmUser" method="post">' +
+		var content = '<form class="form-horizontal" action="http://localhost/yii/plataforma/shop/confirmUser" method="post">' +
           '<div class="form-group form-group-lg">' +
             '<label for="producto" class="col-md-3 control-label input-lg">Celular</label>' +
             '<div class="col-md-9">' +
@@ -13,7 +13,8 @@ $(document).on('ready', function(){
           '</div>' +
 		  '<div class="form-group">' +
 		    '<div class="col-sm-offset-3 col-sm-10">' +
-		      '<button type="submit" class="btn btn-primary btn-lg">Confirmar</button>' +
+		      '<button type="submit" class="btn btn-primary btn-lg">'+
+		      'Confirmar</button>' +
 		    '</div>' +
 		  '</div>' +
         '</form>' +

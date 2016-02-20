@@ -10,7 +10,7 @@ $this->pageTitle="Bienvenido a ".Yii::app()->name;
 background-size:100%;">
 	<div id="slider-content">
 		<div class="slide" id="slide1">
-			<img src="<?php echo Yii::app()->request->baseUrl; ?>/images/teocredit/logo2.png" id="logo">
+			<img src="<?php echo Yii::app()->request->baseUrl; ?>/images/teocredit/logo.png" id="logo">
 			<span class="text">
 				Crédito <span id="lema">Fácil, Rápido y Seguro</span>
 			</span>

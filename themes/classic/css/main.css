@@ -71,6 +71,14 @@ a.thumbnail:hover{
 	background: #fff;
 	border:none;
 }
+#loading-content {
+	position: absolute;
+	font-size: 60px;
+	top: 300px;
+	z-index: 100;
+	color: #DD4132;
+	display: none;
+}
 /*
 	*	Menu
 */

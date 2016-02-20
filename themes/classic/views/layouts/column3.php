@@ -22,7 +22,7 @@
 						<?php $categorias = $this->getCategories(); ?>	
 
 						<?php foreach ($categorias as $categoria): ?>
-							<a href="<?php echo Yii::app()->request->baseUrl ?>/shop/categoria?name=<?php echo $categoria->id_cat; ?>" class="no-decoration"
+							<a href="categoria?name=<?php echo $categoria->id_cat; ?>" class="no-decoration"
 							id="c<?php echo $categoria->id_cat; ?>">
 								<div class="line-category">
 								<div class="img-category">
